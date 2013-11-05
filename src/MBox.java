@@ -13,4 +13,5 @@ public abstract class MBox implements VertexInterface {
 		return xy;
 	}
 
+	public abstract boolean isWall();
 }
