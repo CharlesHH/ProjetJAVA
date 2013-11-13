@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.lang.Math;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 
 public class Maze implements GraphInterface {
@@ -99,5 +101,22 @@ public class Maze implements GraphInterface {
 		return List;
 	}
 	
-	
+	public final void initFromTextFile(String fileName){
+		
+		try{
+			FileReader fr = new FileReader(fileName);
+			BufferedReader br = new BufferedReader(fr);
+			String ligne;
+			while((ligne = br.readLine()) != null){
+				System.out.println(ligne);
+			}
+			try{
+				br.close();
+			}catch (Exception e){}
+			
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+
 }
