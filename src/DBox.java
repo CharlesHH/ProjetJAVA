@@ -8,5 +8,20 @@ public class DBox extends MBox {
 	public boolean isWall(){
 		return false;
 	}
+	
+	@Override
+	public boolean isEmpty(){
+		return false;
+	}
+
+	@Override
+	public boolean isArrivee(){
+		return false;
+	}
+	
+	@Override
+	public boolean isDepart(){
+		return true;
+	}
 
 }

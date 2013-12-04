@@ -8,4 +8,19 @@ public class EBox extends MBox{
 	public boolean isWall(){
 		return false;
 	}
+	
+	@Override
+	public boolean isEmpty(){
+		return true;
+	}
+
+	@Override
+	public boolean isArrivee(){
+		return false;
+	}
+	
+	@Override
+	public boolean isDepart(){
+		return false;
+	}
 }

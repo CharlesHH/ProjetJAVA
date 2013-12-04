@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.lang.Math;
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
+
 
 
 public class Maze implements GraphInterface {
@@ -101,20 +101,56 @@ public class Maze implements GraphInterface {
 		return List;
 	}
 	
-	public final void initFromTextFile(String fileName){
+	public final void initFromTextFile(String fileName)
+		throws MazeReadingException
+	{
 		
 		try{
 			FileReader fr = new FileReader(fileName);
 			BufferedReader br = new BufferedReader(fr);
-			String ligne;
-			while((ligne = br.readLine()) != null){
-				System.out.println(ligne);
-			}
-			try{
-				br.close();
-			}catch (Exception e){}
 			
-		} catch (Exception e){
+			String line;		
+			for(int y=0; (line = br.readLine()) != null ; y++){
+				
+				if(y >= Height) throw new MazeReadingException(fileName,y+1,"Too many lines.");
+				
+				for(int x=0; x<line.length(); x++){
+					if(x >= Width) throw new MazeReadingException(fileName,y+1,"Line too long.");
+					else if(line.charAt(x) == 'E') maze[x][y]=new EBox(x,y);
+					else if(line.charAt(x) == 'D') maze[x][y]=new DBox(x,y);
+					else if(line.charAt(x) == 'W') maze[x][y]=new WBox(x,y);
+					else if(line.charAt(x) == 'A') maze[x][y]=new ABox(x,y);
+				}
+			}
+				try{
+					br.close();
+				}catch (Exception e){}
+			
+			} catch (MazeReadingException e){
+				e.PrintMessage();
+			} catch (Exception e){
+				e.printStackTrace();
+		}
+	}
+	
+	public final void saveToTextFile(String fileName){
+		try{
+			PrintWriter pw = new PrintWriter(new FileOutputStream(fileName)) ;
+			
+			for(int y = 0 ; y < Height; y++){
+				for(int x = 0 ; x < Width; x++){
+					if(maze[x][y].isWall()==true) pw.print('W');
+					else if(maze[x][y].isDepart()==true) pw.print('D');
+					else if(maze[x][y].isArrivee()==true) pw.print('A');
+					else if(maze[x][y].isEmpty()==true) pw.print('E');
+				}
+				pw.println();
+			}
+		
+			try{
+				pw.close();
+			}catch (Exception e){}
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
