@@ -1,3 +1,4 @@
+package dijkstra;
 
 public interface PiInterface {
 	// Set the value of the Pi function for a vertex

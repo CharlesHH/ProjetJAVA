@@ -1,6 +1,11 @@
+package maze;
 import java.util.ArrayList;
 import java.lang.Math;
 import java.io.*;
+
+
+import dijkstra.GraphInterface;
+import dijkstra.VertexInterface;
 
 
 

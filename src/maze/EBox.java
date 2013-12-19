@@ -1,6 +1,7 @@
+package maze;
 
-public class DBox extends MBox {
-	public DBox(int x, int y) {
+public class EBox extends MBox{
+	public EBox(int x, int y) {
 		super(x, y);
 	}
 	
@@ -11,7 +12,7 @@ public class DBox extends MBox {
 	
 	@Override
 	public boolean isEmpty(){
-		return false;
+		return true;
 	}
 
 	@Override
@@ -21,7 +22,6 @@ public class DBox extends MBox {
 	
 	@Override
 	public boolean isDepart(){
-		return true;
+		return false;
 	}
-
 }

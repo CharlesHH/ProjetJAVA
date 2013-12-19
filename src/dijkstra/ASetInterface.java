@@ -1,3 +1,4 @@
+package dijkstra;
 
 public interface ASetInterface {
 	//Check if a vertex is in A
