@@ -26,7 +26,8 @@ public class Previous implements PreviousInterface {
 		VertexInterface current = v;
 		
 		while(hashTable.containsKey(current)){
-			
+			list.add(current);
+			current = hashTable.get(current);
 		}
 		return list;
 	}

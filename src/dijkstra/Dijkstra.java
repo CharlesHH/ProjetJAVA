@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 
 public class Dijkstra {
-	private PreviousInterface dijkstra(GraphInterface g, VertexInterface r, ASetInterface a, PiInterface pi, PreviousInterface previous) {
+	private static PreviousInterface dijkstra(GraphInterface g, VertexInterface r, ASetInterface a, PiInterface pi, PreviousInterface previous) {
 		a.Add(r);
 		VertexInterface pivot;
 		pivot = r;
@@ -42,6 +42,15 @@ public class Dijkstra {
 		}
 		
 		return previous;
+	}
+	
+	public static PreviousInterface dijkstra(GraphInterface g, VertexInterface r){
+		Pi pi = new Pi();
+		ASet a = new ASet();
+		Previous previous = new Previous();
+		
+		return dijkstra(g,r,a,pi,previous);
+		
 	}
 	
 }
