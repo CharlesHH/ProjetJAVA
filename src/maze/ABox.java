@@ -13,7 +13,7 @@ public class ABox extends MBox {
 	
 	@Override
 	public boolean isEmpty(){
-		return false;
+		return true;
 	}
 
 	@Override
@@ -23,6 +23,11 @@ public class ABox extends MBox {
 	
 	@Override
 	public boolean isDepart(){
+		return false;
+	}
+	
+	@Override
+	public boolean isHL() {
 		return false;
 	}
 

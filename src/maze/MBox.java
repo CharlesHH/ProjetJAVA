@@ -20,4 +20,5 @@ public abstract class MBox implements VertexInterface {
 	public abstract boolean isEmpty();
 	public abstract boolean isArrivee();
 	public abstract boolean isDepart();
+	public abstract boolean isHL();
 }

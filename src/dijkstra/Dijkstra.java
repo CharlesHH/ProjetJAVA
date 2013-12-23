@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Dijkstra {
 	private static PreviousInterface dijkstra(GraphInterface g, VertexInterface r, ASetInterface a, PiInterface pi, PreviousInterface previous) {
-		a.Add(r);
+		a.add(r);
 		VertexInterface pivot;
 		pivot = r;
 		pi.setPi(r,0.0);
@@ -19,7 +19,7 @@ public class Dijkstra {
 			
 			ArrayList<VertexInterface> SuccessorsList = g.getSuccessors(pivot);
 			for(VertexInterface y : SuccessorsList){
-				if (a.IsInA(y)==false) {
+				if (a.isInA(y)==false) {
 					if ( pi.getPi(pivot) + g.p(pivot, y)<pi.getPi(y) ) {
 						pi.setPi(y, pi.getPi(pivot) + g.p(pivot, y));
 						previous.setPrevious(y, pivot);
@@ -30,7 +30,7 @@ public class Dijkstra {
 			double PiTest = Double.POSITIVE_INFINITY;
 			VertexInterface VertexTest = null;
 			for(VertexInterface y : VerticesList){
-				if (a.IsInA(y)==false) {
+				if (a.isInA(y)==false) {
 					if (PiTest >= pi.getPi(y)) {
 						VertexTest = y;
 						PiTest = pi.getPi(y);
@@ -38,7 +38,7 @@ public class Dijkstra {
 				}
 			}
 			pivot = VertexTest;
-			a.Add(pivot);
+			a.add(pivot);
 		}
 		
 		return previous;

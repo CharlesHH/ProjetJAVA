@@ -10,12 +10,12 @@ public class ASet implements ASetInterface {
 	}
 
 	@Override
-	public boolean IsInA(VertexInterface v) {
+	public boolean isInA(VertexInterface v) {
 		return hashSet.contains(v);
 	}
 
 	@Override
-	public void Add(VertexInterface v) {
+	public void add(VertexInterface v) {
 		hashSet.add(v);
 	}
 

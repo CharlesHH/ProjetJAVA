@@ -24,4 +24,9 @@ public class EBox extends MBox{
 	public boolean isDepart(){
 		return false;
 	}
+	
+	@Override
+	public boolean isHL() {
+		return false;
+	}
 }

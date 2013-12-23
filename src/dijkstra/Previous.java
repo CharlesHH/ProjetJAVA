@@ -21,7 +21,7 @@ public class Previous implements PreviousInterface {
 	}
 
 	@Override
-	public ArrayList<VertexInterface> shortPath(VertexInterface v) {
+	public ArrayList<VertexInterface> shortPath(VertexInterface v) {  //le sommet racine n'est pas ajouté à la liste, mais v si
 		ArrayList<VertexInterface> list = new ArrayList<VertexInterface>();
 		VertexInterface current = v;
 		
