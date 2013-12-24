@@ -15,7 +15,7 @@ public class MazeReadingException extends Exception {
 		this.line = line;
 	}
 	
-	public void PrintMessage(){
+	public void printMessage(){
 		System.out.println("Exception while reading" + fileName + ":");
 		System.out.println("	Line "+ line +": "+ message);
 	}

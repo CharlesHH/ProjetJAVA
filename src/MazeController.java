@@ -1,6 +1,13 @@
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+import maze.ABox;
+import maze.DBox;
+import maze.EBox;
 import maze.Maze;
 import maze.MazeReadingException;
+import maze.WBox;
 import fr.enst.inf103.ui.MazeViewController;
 import fr.enst.inf103.ui.MazeViewSource;
 
@@ -31,9 +38,38 @@ public class MazeController implements MazeViewController{
 
 	@Override
 	public MazeViewSource openMaze(String fileName) {
+		try{
+				FileReader fr = new FileReader(fileName);
+				BufferedReader br = new BufferedReader(fr);
+			
+				String line;
+				int w=0;
+				int h =0;
+				for(int y=0; (line = br.readLine()) != null ; y++){
+					if (y==0) {
+						w = line.length();
+					}
+					else if(w != line.length()) throw new Exception("File format incorrect");
+					
+					h=y+1;
+				}
+				try{
+					br.close();
+				}catch (Exception e){}
+			
+				this.maze = new Maze(h,w);	
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		
+		
 		try {
 			maze.initFromTextFile(fileName);
-		} catch (MazeReadingException e) {e.printStackTrace();}
+		} catch (MazeReadingException e) {
+			e.printMessage();
+		} catch (Exception e){
+			e.printStackTrace();
+		}
 		
 		
 		return (MazeViewSource) this.maze;

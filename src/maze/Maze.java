@@ -127,30 +127,30 @@ public class Maze implements GraphInterface, MazeViewSource {
 	{
 		
 		try{
-			FileReader fr = new FileReader(fileName);
-			BufferedReader br = new BufferedReader(fr);
+				FileReader fr = new FileReader(fileName);
+				BufferedReader br = new BufferedReader(fr);
 			
-			String line;		
-			for(int y=0; (line = br.readLine()) != null ; y++){
+				String line;		
+				for(int y=0; (line = br.readLine()) != null ; y++){
 				
-				if(y >= Height) throw new MazeReadingException(fileName,y+1,"Too many lines.");
+					if(y >= Height) throw new MazeReadingException(fileName,y+1,"Too many lines.");
 				
-				for(int x=0; x<line.length(); x++){
-					if(x >= Width) throw new MazeReadingException(fileName,y+1,"Line too long.");
-					else if(line.charAt(x) == 'E') maze[x][y]=new EBox(x,y);
-					else if(line.charAt(x) == 'D') maze[x][y]=new DBox(x,y);
-					else if(line.charAt(x) == 'W') maze[x][y]=new WBox(x,y);
-					else if(line.charAt(x) == 'A') maze[x][y]=new ABox(x,y);
+					for(int x=0; x<line.length(); x++){
+						if(x >= Width) throw new MazeReadingException(fileName,y+1,"Line too long.");
+						else if(line.charAt(x) == 'E') maze[x][y]=new EBox(x,y);
+						else if(line.charAt(x) == 'D') maze[x][y]=new DBox(x,y);
+						else if(line.charAt(x) == 'W') maze[x][y]=new WBox(x,y);
+						else if(line.charAt(x) == 'A') maze[x][y]=new ABox(x,y);
+					}
 				}
-			}
 				try{
 					br.close();
 				}catch (Exception e){}
 			
-			} catch (MazeReadingException e){
-				e.PrintMessage();
-			} catch (Exception e){
-				e.printStackTrace();
+		} catch (MazeReadingException e){
+			e.printMessage();
+		} catch (Exception e){
+			e.printStackTrace();
 		}
 	}
 	
