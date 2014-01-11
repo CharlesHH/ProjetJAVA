@@ -12,7 +12,7 @@ public class Main {
 		final int WIDTH;
 		final int HEIGHT;
 		
-		for(String arg : args){
+		for(String arg : args){  //Allow to specify the dimensions of the laby through the args
 			i++;
 		}
 		if(i != 2) {
@@ -24,8 +24,8 @@ public class Main {
 			HEIGHT = Integer.parseInt(args[1]);
 		}
 		
-		MazeController mazeController = new MazeController(HEIGHT, WIDTH);
-		MazeWindow mazeWindow = new MazeWindow("MonLaby", mazeController ) ;		
+		MazeController mazeController = new MazeController(HEIGHT, WIDTH);  //creation of the maze controller
+		MazeWindow mazeWindow = new MazeWindow("MonLaby", mazeController ) ;	//creation of the window	
 	}
 
 }

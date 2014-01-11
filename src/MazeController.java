@@ -2,26 +2,23 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-import maze.ABox;
-import maze.DBox;
-import maze.EBox;
 import maze.Maze;
 import maze.MazeReadingException;
-import maze.WBox;
 import fr.enst.inf103.ui.MazeViewController;
 import fr.enst.inf103.ui.MazeViewSource;
+
 
 
 public class MazeController implements MazeViewController{
 	private Maze maze;
 	
 	public MazeController(int h, int w) {
-		this.maze = new Maze(h,w);
+		this.maze = new Maze(h,w);  //upon creation of a maze controller, a corresponding maze is created
 	}
 	
 	@Override
 	public MazeViewSource getMazeViewSource() {
-		MazeViewSource mazeVS = (MazeViewSource) this.maze;
+		MazeViewSource mazeVS = (MazeViewSource) this.maze; //casting of the maze as a maze view source
 		return mazeVS;
 	}
 
@@ -47,9 +44,9 @@ public class MazeController implements MazeViewController{
 				int h =0;
 				for(int y=0; (line = br.readLine()) != null ; y++){
 					if (y==0) {
-						w = line.length();
+						w = line.length(); //initialization of the laby's width depending of the file
 					}
-					else if(w != line.length()) throw new Exception("File format incorrect");
+					else if(w != line.length()) throw new Exception("File format incorrect"); //if the file is not a rectangle , exception
 					
 					h=y+1;
 				}
@@ -57,14 +54,14 @@ public class MazeController implements MazeViewController{
 					br.close();
 				}catch (Exception e){}
 			
-				this.maze = new Maze(h,w);	
+				this.maze = new Maze(h,w);	//the dimensions of the maze are adapted to correspond these specified in the file
 		} catch (Exception e){
 			e.printStackTrace();
 		}
 		
 		
 		try {
-			maze.initFromTextFile(fileName);
+			maze.initFromTextFile(fileName); //the maze is initialized
 		} catch (MazeReadingException e) {
 			e.printMessage();
 		} catch (Exception e){

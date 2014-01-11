@@ -229,7 +229,7 @@ public class Maze implements GraphInterface, MazeViewSource {
 
 		for(int j = 0 ; j < Height ; j++){
 			for(int i = 0 ; i < Width ; i++){
-				if(this.getSymbolForBox(j, i) =="*") this.setSymbolForBox(j, i, "E");
+				if(this.getSymbolForBox(j, i) =="*") this.setSymbolForBox(j, i, "E"); //upon a click, every highlighted empty box return to standard
 			}
 		}
 		
@@ -245,7 +245,7 @@ public class Maze implements GraphInterface, MazeViewSource {
 		double yClic = mouseEvent.getPoint().getY();
 		double viewHeight = mazeView.getHeight();
 		double yPos = (yClic / viewHeight) * this.Height;
-		int yPosInt = (int)yPos;
+		int yPosInt = (int)yPos; // calculate the positions of the click on the maze (which box)
     
 		String symbol = getSymbolForBox(yPosInt, xPosInt);
 		
@@ -255,15 +255,15 @@ public class Maze implements GraphInterface, MazeViewSource {
 			setSymbolForBox(yPosInt, xPosInt, "E");
 		}
 		
-		if ((mouseEvent.getModifiersEx() & MouseEvent.SHIFT_DOWN_MASK) == MouseEvent.SHIFT_DOWN_MASK) {
-			if (symbol.equals("E")|| symbol.equals("A")|| symbol.equals("W")) {
+		if ((mouseEvent.getModifiersEx() & MouseEvent.SHIFT_DOWN_MASK) == MouseEvent.SHIFT_DOWN_MASK) { //if shift is pressed when the click happens
+			if (symbol.equals("E")|| symbol.equals("A")|| symbol.equals("W")) {	
 				setSymbolForBox(yPosInt, xPosInt, "D");
 			} else if (symbol.equals("D")) {
 				setSymbolForBox(yPosInt, xPosInt, "A");
 			}
 		}
 
-		mazeView.repaint();
+		mazeView.repaint(); //refresh the window
 		
 		return true;
 	}
@@ -283,27 +283,29 @@ public class Maze implements GraphInterface, MazeViewSource {
 		for(VertexInterface v:list){
 			MBox m = (MBox) v;
 			if(m.isDepart()==true){
-				if(compteur ==0){
+				if(compteur ==0){ //if there's only one depart box. Else nothing happen
 					depart = m;
 					compteur ++;
 				}
 				else return;
 			}
 		}
+		if(compteur!=1) return;
 		
 		compteur = 0;
 		for(VertexInterface v2:list){
 			MBox m2 = (MBox) v2;
 			if(m2.isArrivee()==true){
-				if(compteur ==0){
+				if(compteur ==0){ //if there's only one arrival box. Else nothing happen
 				 arrivee = m2;
 				 compteur ++;
 				}
 				else return;
 			}
 		}
+		if (compteur!=1) return;
 		
-		ArrayList<VertexInterface> result = Dijkstra.dijkstra((GraphInterface) this, (VertexInterface) depart).shortPath((VertexInterface) arrivee);
+		ArrayList<VertexInterface> result = Dijkstra.dijkstra((GraphInterface) this, (VertexInterface) depart).shortPath((VertexInterface) arrivee); //list every vertices on the shortest path
 		
 		for(VertexInterface vr:result){
 			MBox mr = (MBox)vr;
@@ -312,7 +314,7 @@ public class Maze implements GraphInterface, MazeViewSource {
 			String xString = xy.split(",")[0];
 			String yString = xy.split(",")[1];
 			int x = Integer.parseInt(xString);
-			int y = Integer.parseInt(yString);	
+			int y = Integer.parseInt(yString);	//get the coordinate of the box vr of the shortest path
 			
 			if(mr.isEmpty()==true&& mr.isArrivee() == false) this.setSymbolForBox(y, x, "*"); //le test permet de ne pas colorer l'arrivée (cf. Previous)
 		}
