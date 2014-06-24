@@ -1,4 +1,5 @@
-import fr.enst.inf103.ui.MazeWindow;
+import ui.MazeWindow;
+
 
 
 

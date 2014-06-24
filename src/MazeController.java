@@ -4,8 +4,8 @@ import java.io.FileReader;
 
 import maze.Maze;
 import maze.MazeReadingException;
-import fr.enst.inf103.ui.MazeViewController;
-import fr.enst.inf103.ui.MazeViewSource;
+import ui.MazeViewController;
+import ui.MazeViewSource;
 
 
 

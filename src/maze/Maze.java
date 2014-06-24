@@ -9,11 +9,11 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import ui.MazeView;
+import ui.MazeViewSource;
 import dijkstra.Dijkstra;
 import dijkstra.GraphInterface;
 import dijkstra.VertexInterface;
-import fr.enst.inf103.ui.MazeView;
-import fr.enst.inf103.ui.MazeViewSource;
 
 
 
